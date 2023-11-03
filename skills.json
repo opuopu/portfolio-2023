@@ -1,0 +1,58 @@
+[
+  {
+    "value": 99,
+    "text": "HTML"
+  },
+  {
+    "value": 99,
+    "text": "CSS"
+  },
+  {
+    "value": 99,
+    "text": "TAILWIND CSS"
+  },
+  {
+    "value": 90,
+    "text": "JAVASCRIPT"
+  },
+  {
+    "value": 90,
+    "text": "TYPESCRIPT"
+  },
+  {
+    "value": 90,
+    "text": "REACT JS"
+  },
+  {
+    "value": 90,
+    "text": "NEXT JS"
+  },
+  {
+    "value": 90,
+    "text": "FIREBASE"
+  },
+  {
+    "value": 90,
+    "text": "NODE JS"
+  },
+  {
+    "value": 90,
+    "text": "EXPRESS JS"
+  },
+  {
+    "value": 90,
+    "text": "MONGODB"
+  },
+  {
+    "value": 90,
+    "text": "MONGOOSE"
+  },
+  {
+    "value": 90,
+    "text": "PRISMA"
+  },
+  {
+    "value": 80,
+    "text": "POSTGRESQL"
+  }
+]
