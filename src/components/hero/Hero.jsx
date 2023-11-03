@@ -62,9 +62,17 @@ const Hero = () => {
           animate="animate"
         >
           <motion.h2 variants={textVariants}>Nur Mohammod Opu</motion.h2>
-          <motion.h1 variants={textVariants}>
+          <motion.h1 className="h1" variants={textVariants}>
             Full Stack Web Developer
           </motion.h1>
+          <motion.p className="desc">
+            A passionate web developer with a deep-rooted commitment to MERN
+            technology. Over the past 1.5 years, I have dedicated myself to
+            honing my skills and knowledge in web development, with a focus on
+            building user-centric web applications. My aim is to contribute
+            effectively to web development projects and grow continuously in
+            this dynamic field.
+          </motion.p>
           <motion.a
             className="motiona"
             href="https://drive.google.com/uc?export=download&id=1HDRBkTfne50smyLQrqjk4_30Yl5Vas8T"

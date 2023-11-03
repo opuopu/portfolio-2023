@@ -10,6 +10,7 @@ import {
 import "react-circular-progressbar/dist/styles.css";
 import ChangingProgressProvider from "../ChangingProgressProvider/ChangingProgressProvider";
 import RadialSeparators from "../RadialSeparators/RadialSeparators";
+import { skills } from "../../utiles/fakedata";
 const variants = {
   initial: {
     x: -500,
@@ -28,14 +29,6 @@ const variants = {
 };
 
 const Services = () => {
-  const [skills, setskills] = useState([]);
-  useEffect(() => {
-    fetch("./skills.json")
-      .then((res) => res.json())
-      .then((data) => setskills(data));
-  }, []);
-
-  console.log(skills);
   const ref = useRef();
 
   const isInView = useInView(ref, { margin: "-100px" });

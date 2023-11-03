@@ -30,11 +30,13 @@
       .motiona {
         border: 1px solid white;
         padding: 8px 20px;
-
         position: absolute;
         z-index: 1;
-        bottom: 110px; /* Place the anchor above other elements */
+        bottom: 50px; /* Place the anchor above other elements */
         /* Adjust the top position as needed */
+      }
+      .motiona:hover {
+        background-color: #0c0c1d;
       }
       h2 {
         font-size: 30px;
@@ -44,10 +46,18 @@
 
       h1 {
         font-size: 88px;
+        line-height: 90px;
+
+        padding-bottom: 0;
 
         @include mobile {
           font-size: 36px;
         }
+      }
+      .desc {
+        z-index: 2;
+        margin-top: -30px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
       .buttons {
