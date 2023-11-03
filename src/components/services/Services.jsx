@@ -1,10 +1,15 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./services.scss";
 import { motion, useInView } from "framer-motion";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
 
 import "react-circular-progressbar/dist/styles.css";
 import ChangingProgressProvider from "../ChangingProgressProvider/ChangingProgressProvider";
+import RadialSeparators from "../RadialSeparators/RadialSeparators";
 const variants = {
   initial: {
     x: -500,
@@ -23,6 +28,14 @@ const variants = {
 };
 
 const Services = () => {
+  const [skills, setskills] = useState([]);
+  useEffect(() => {
+    fetch("./skills.json")
+      .then((res) => res.json())
+      .then((data) => setskills(data));
+  }, []);
+
+  console.log(skills);
   const ref = useRef();
 
   const isInView = useInView(ref, { margin: "-100px" });
@@ -39,58 +52,67 @@ const Services = () => {
     >
       <motion.div className="textContainer" variants={variants}>
         <p>
-          I focus on helping your brand grow
-          <br /> and move forward
+          My Web Development Journey
+          <br /> Crafting Digital Experiences
         </p>
         <hr />
       </motion.div>
       <motion.div className="titleContainer" variants={variants}>
         <div className="title">
-          <img src="/people.webp" alt="" />
           <h1>
-            <motion.b whileHover={{ color: "orange" }}>Unique</motion.b> Ideas
+            <motion.b whileHover={{ color: "orange" }}>Skills &</motion.b>{" "}
+            Experience
           </h1>
         </div>
-        <div className="title">
-          <h1>
-            <motion.b whileHover={{ color: "orange" }}>For Your</motion.b>{" "}
-            Business.
-          </h1>
-          <button>WHAT WE DO?</button>
-        </div>
+        <div className="title"></div>
       </motion.div>
-      <motion.div className="listContainer" variants={variants}>
-        <div
-          style={{
-            width: 100,
-            height: 100,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <ChangingProgressProvider values={[0, 90]}>
-            {(percentage) => (
-              <CircularProgressbar
-                styles={buildStyles({
-                  pathTransition: "stroke-dashoffset 0.5s ease 0s",
-                })}
-                value={percentage}
-                text={percentage}
-              />
-            )}
-          </ChangingProgressProvider>
-          <h5
+      <motion.div className="listContainer skillsgrid" variants={variants}>
+        {skills?.map((skill, index) => (
+          <div
+            key={index}
             style={{
-              marginTop: "4px",
-              fontSize: "18px",
-              color: "white",
+              width: 100,
+              height: 100,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            HTML
-          </h5>
-        </div>
+            <ChangingProgressProvider values={[0, skill?.value]}>
+              {(percentage) => (
+                <CircularProgressbarWithChildren
+                  strokeWidth={10}
+                  styles={buildStyles({
+                    pathTransition: "stroke-dashoffset 0.5s ease 0s",
+                    strokeLinecap: "butt",
+                  })}
+                  value={percentage}
+                  text={percentage}
+                >
+                  <RadialSeparators
+                    count={12}
+                    style={{
+                      background: "#fff",
+                      width: "2px",
+                      // This needs to be equal to props.strokeWidth
+                      height: `${10}%`,
+                    }}
+                  />
+                </CircularProgressbarWithChildren>
+              )}
+            </ChangingProgressProvider>
+            <h5
+              style={{
+                marginTop: "4px",
+                fontSize: "18px",
+                color: "white",
+              }}
+            >
+              {skill?.text}
+            </h5>
+          </div>
+        ))}
       </motion.div>
     </motion.div>
   );

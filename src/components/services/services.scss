@@ -143,4 +143,12 @@
       }
     }
   }
+  .skillsgrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 80px;
+    row-gap: 40px;
+    align-items: center;
+    justify-items: center;
+  }
 }
